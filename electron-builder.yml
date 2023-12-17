@@ -1,4 +1,4 @@
-appId: com.electron.app
+appId: com.vicheanath.chuonnath.app
 productName: chuonnath
 directories:
   buildResources: build
