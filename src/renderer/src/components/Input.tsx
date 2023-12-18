@@ -16,7 +16,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const cn = `w-full py-2 px-4 rounded-8 text-primary-100 placeholder-primary-300 focus:outline-none ${bg} ${ring} ${className} `
 
     return textarea ? (
-      <textarea ref={ref as any} className={cn} data-testid="textarea" {...(props as any)} />
+      <textarea ref={ref} className={cn} data-testid="textarea" {...(props as any)} />
     ) : (
       <input ref={ref} className={cn} data-testid="input" {...props} />
     )

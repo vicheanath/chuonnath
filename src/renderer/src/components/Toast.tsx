@@ -47,7 +47,10 @@ export const ErrorToast: React.FC<ErrorMessageProps> = ({
             height: 13
           }}
           onClick={onClose}
+          onMouseOver={() => {}}
+          onMouseLeave={() => {}}
           data-testid="close-btn"
+          role="button"
         >
           <SolidPlus style={{ transform: 'rotate(45deg)' }} />
         </div>
