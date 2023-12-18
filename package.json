@@ -37,7 +37,8 @@
     "@electron-toolkit/preload": "^2.0.0",
     "@electron-toolkit/utils": "^2.0.0",
     "dexie": "^3.2.4",
-    "electron-updater": "^6.1.1"
+    "electron-updater": "^6.1.1",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^1.0.1",
