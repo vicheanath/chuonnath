@@ -38,7 +38,7 @@ export const ErrorToast: React.FC<ErrorMessageProps> = ({
       data-testid="error-message"
     >
       {onClose ? (
-        <div
+        <button
           className={`flex absolute cursor-pointer`}
           style={{
             top: 5,
@@ -50,7 +50,7 @@ export const ErrorToast: React.FC<ErrorMessageProps> = ({
           data-testid="close-btn"
         >
           <SolidPlus style={{ transform: 'rotate(45deg)' }} />
-        </div>
+        </button>
       ) : null}
       <div className={`flex space-x-4 items-center`}>
         <div className={`bold`}>{message}</div>
