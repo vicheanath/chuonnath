@@ -11,11 +11,7 @@ const HomeScreen: FC = (): JSX.Element => {
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error}</div>}
 
-      {data && (
-        <div>
-          {/* <div>data: {JSON.stringify(data)}</div> */}
-        </div>
-      )}
+      {data && <div>{/* <div>data: {JSON.stringify(data)}</div> */}</div>}
     </div>
   )
 }
