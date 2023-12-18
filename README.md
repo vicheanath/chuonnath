@@ -6,8 +6,6 @@ I'm as a developer, I would like to create a digital version of the Chuon Nath K
 
 we have word source from [Khmer Dictionary]() and [Khmer Word]() i will put the source that i have in this project. and i want everyone to help me to improve this project together.
 
-
-
 ## Features
 
 - [x] Search word (ស្វែងរកពាក្យ)

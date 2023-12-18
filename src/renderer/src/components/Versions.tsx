@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 function Versions(): JSX.Element {
   const [versions] = useState(window.electron.process.versions)
-
+  console.log(window.electron)
   return (
     <ul className="versions">
       <li className="electron-version">Electron v{versions.electron}</li>
