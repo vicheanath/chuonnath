@@ -1,6 +1,7 @@
 import Dexie, { IndexableType, PromiseExtended } from 'dexie'
+import { AbstractMain } from './AbstractMain'
 
-export interface Note {
+export interface INote {
   id?: number
   word: string
   definition: string
@@ -16,6 +17,17 @@ export interface INoteController {
   findAll(): Promise<Note[]>
   search(word: string): Promise<Note[]>
   count(): Promise<number>
+}
+
+export class Note extends AbstractMain implements INote {
+  id?: number
+  word: string
+  definition: string
+  constructor(word: string, definition: string) {
+    super()
+    this.word = word
+    this.definition = definition
+  }
 }
 
 export class NoteControllerImpl implements INoteController {

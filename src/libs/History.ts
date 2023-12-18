@@ -1,6 +1,7 @@
 import Dexie, { IndexableType, PromiseExtended } from 'dexie'
+import { AbstractMain } from './AbstractMain'
 
-export interface History {
+export interface IHistory {
   id?: number
   word: string
   definition: string
@@ -16,6 +17,17 @@ export interface IHistoryController {
   findAll(): Promise<History[]>
   search(word: string): Promise<History[]>
   count(): Promise<number>
+}
+
+export class History extends AbstractMain implements IHistory {
+  id?: number
+  word: string
+  definition: string
+  constructor(word: string, definition: string) {
+    super()
+    this.word = word
+    this.definition = definition
+  }
 }
 
 export class HistoryControllerImpl implements IHistoryController {

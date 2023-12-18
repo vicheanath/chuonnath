@@ -1,6 +1,7 @@
 import Dexie, { IndexableType, PromiseExtended } from 'dexie'
+import { AbstractMain } from './AbstractMain'
 
-export interface Setting {
+export interface ISetting {
   id?: number
   setting: string
   value: string
@@ -16,6 +17,17 @@ export interface ISettingController {
   findAll(): Promise<Setting[]>
   search(word: string): Promise<Setting[]>
   count(): Promise<number>
+}
+
+class Setting extends AbstractMain implements ISetting {
+  id?: number
+  setting: string
+  value: string
+  constructor(setting: string, value: string) {
+    super()
+    this.setting = setting
+    this.value = value
+  }
 }
 
 export class SettingControllerImpl implements ISettingController {

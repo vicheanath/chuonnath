@@ -1,4 +1,5 @@
 import Dexie, { IndexableType, PromiseExtended } from 'dexie'
+import { AbstractMain } from './AbstractMain'
 
 export interface IBookmarkController {
   create(bookmark: Bookmark): PromiseExtended<IndexableType>
@@ -10,12 +11,23 @@ export interface IBookmarkController {
   count(): Promise<number>
 }
 
-export interface Bookmark {
+export interface IBookmark {
   id?: number
   word: string
   definition: string
   createdAt?: Date
   updatedAt?: Date
+}
+
+export class Bookmark extends AbstractMain implements IBookmark {
+  id?: number
+  word: string
+  definition: string
+  constructor(word: string, definition: string) {
+    super()
+    this.word = word
+    this.definition = definition
+  }
 }
 
 export class BookmarkControllerImpl implements IBookmarkController {
