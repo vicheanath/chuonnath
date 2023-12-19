@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, PropsWithChildren, useContext, useEffect, useMemo, useState } from 'react'
+import { JSONArray, WordControllerImpl } from '@renderer/libs/Word'
 
 import dataJson from '../assets/data.json'
 
@@ -21,21 +22,21 @@ const useDataContext = (): DataContextType => {
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const DataContextProvider = ({ children }: PropsWithChildren<unknown>) => {
-  const [data, setData] = useState<DataContextType['data']>(null)
+  const [data] = useState<DataContextType['data']>(null)
   const [loading, setLoading] = useState<DataContextType['loading']>(true)
   const [error, setError] = useState<DataContextType['error']>(null)
 
   useEffect(() => {
-    const fetchData = async (): Promise<void> => {
+    const loadData = async (): Promise<void> => {
       try {
-        setData(dataJson)
+        WordControllerImpl.load(dataJson as JSONArray[])
       } catch (error) {
         setError(error)
       } finally {
         setLoading(false)
       }
     }
-    fetchData()
+    loadData()
   }, [])
 
   const value = useMemo(() => ({ data, loading, error }), [data, loading, error])
