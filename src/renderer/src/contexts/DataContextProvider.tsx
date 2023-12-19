@@ -23,18 +23,12 @@ const useDataContext = (): DataContextType => {
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const DataContextProvider = ({ children }: PropsWithChildren<unknown>) => {
   const [data] = useState<DataContextType['data']>(null)
-  const [loading, setLoading] = useState<DataContextType['loading']>(true)
-  const [error, setError] = useState<DataContextType['error']>(null)
+  const [loading] = useState<DataContextType['loading']>(true)
+  const [error] = useState<DataContextType['error']>(null)
 
   useEffect(() => {
     const loadData = async (): Promise<void> => {
-      try {
-        WordControllerImpl.load(dataJson as JSONArray)
-      } catch (error) {
-        setError(error)
-      } finally {
-        setLoading(false)
-      }
+      await WordControllerImpl.load(dataJson as JSONArray)
     }
     loadData()
   }, [])
