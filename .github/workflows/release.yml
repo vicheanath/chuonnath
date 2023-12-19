@@ -1,90 +1,90 @@
-# name: Deploy
+name: Deploy
 
-# on:
-#   push:
-#     tags:
-#       - 'v[0-9]+.[0-9]+.[0-9]+'
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
-# jobs:
-#   build_ubuntu:
-#     runs-on: ubuntu-20.04
-#     steps:
-#       - name: Checkout git repo
-#         uses: actions/checkout@v3
+jobs:
+  build_ubuntu:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout git repo
+        uses: actions/checkout@v3
 
-#       - name: Install Node and NPM
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: 16
-#           cache: npm
+      - name: Install Node and NPM
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
 
-#       - name: Install and build
-#         run: |
-#           npm install
-#           npm run postinstall
-#           npm run build
+      - name: Install and build
+        run: |
+          npm install
+          npm run postinstall
+          npm run build
 
-#       - name: Publish releases
-#         env:
-#           # This is used for uploading release assets to github
-#           GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-#         run: |
-#           npm exec electron-builder -- --publish always
+      - name: Publish releases
+        env:
+          # This is used for uploading release assets to github
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        run: |
+          npm build:linux
 
-#   build_mac:
-#     runs-on: macos-latest
-#     steps:
-#       - name: Checkout git repo
-#         uses: actions/checkout@v3
+  # build_mac:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Checkout git repo
+  #       uses: actions/checkout@v3
 
-#       - name: Install Node and NPM
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: 16
-#           cache: npm
+  #     - name: Install Node and NPM
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 16
+  #         cache: npm
 
-#       - name: Install and build
-#         run: |
-#           npm install
-#           npm run postinstall
-#           npm run build
+  #     - name: Install and build
+  #       run: |
+  #         npm install
+  #         npm run postinstall
+  #         npm run build
 
-#       - name: Publish releases
-#         env:
-#           # These values are used for auto updates signing
-#           CSC_LINK: ${{ secrets.CSC_LINK }}
-#           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
-#           APPLE_ID: ${{ secrets.APPLE_ID }}
-#           APPLE_ID_PASS: ${{ secrets.APPLE_ID_PASS }}
-#           APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_ID_PASS }}
-#           # This is used for uploading release assets to github
-#           GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-#         run: |
-#           npm exec electron-builder -- --publish always
+  #     - name: Publish releases
+  #       env:
+  #         # These values are used for auto updates signing
+  #         CSC_LINK: ${{ secrets.CSC_LINK }}
+  #         CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+  #         APPLE_ID: ${{ secrets.APPLE_ID }}
+  #         APPLE_ID_PASS: ${{ secrets.APPLE_ID_PASS }}
+  #         APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_ID_PASS }}
+  #         # This is used for uploading release assets to github
+  #         GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+  #       run: |
+  #         npm build:mac
 
-#   build_window:
-#     runs-on: windows-latest
+  build_window:
+    runs-on: windows-latest
 
-#     steps:
-#       - name: Checkout git repo
-#         uses: actions/checkout@v3
+    steps:
+      - name: Checkout git repo
+        uses: actions/checkout@v3
 
-#       - name: Install Node and NPM
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: 16
-#           cache: npm
+      - name: Install Node and NPM
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
 
-#       - name: Install and build
-#         run: |
-#           npm install
-#           npm run postinstall
-#           npm run build
+      - name: Install and build
+        run: |
+          npm install
+          npm run postinstall
+          npm run build
 
-#       - name: Publish releases
-#         shell: powershell
-#         env:
-#           # This is used for uploading release assets to github
-#           GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-#         run: |
-#           npm exec electron-builder -- --publish always
+      - name: Publish releases
+        shell: powershell
+        env:
+          # This is used for uploading release assets to github
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        run: |
+          npm build:windows
