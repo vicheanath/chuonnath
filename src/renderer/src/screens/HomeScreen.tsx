@@ -7,11 +7,14 @@ const HomeScreen: FC = (): JSX.Element => {
   const [page, setPage] = useState<number>(1)
   const [limit] = useState<number>(15)
   const [search, setSearch] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
 
   const [data, setData] = useState<Word[]>([])
   const fetchData = async (): Promise<void> => {
+    setLoading(true)
     const res = await WordControllerImpl.findAllByPage(page, limit)
     setData(res)
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -25,9 +28,10 @@ const HomeScreen: FC = (): JSX.Element => {
 
   return (
     <div className="container mx-auto">
-      <div className="flex flex-row justify-center items-center w-9/12 mx-auto">
+      <div className="flex flex-row w-9/12 mx-auto">
         <SearchBar onChange={(e) => setSearch(e.target.value)} />
         <Button
+          loading={loading}
           className="ml-4"
           onClick={() => {
             onSearch(search)
@@ -37,7 +41,6 @@ const HomeScreen: FC = (): JSX.Element => {
         </Button>
       </div>
       <div className="flex flex-col">
-        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8"></div>
         <div className="py-2 align-middle inline-block min-w-full">
           <div className="shadow overflow-hidden">
             <div className="bg-white divide-y">
