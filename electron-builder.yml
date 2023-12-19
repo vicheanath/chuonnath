@@ -1,5 +1,5 @@
 appId: com.vicheanath.chuonnath.app
-productName: chuonnath
+productName: Chuon Nath Dictionary
 directories:
   buildResources: build
 files:
@@ -33,7 +33,7 @@ linux:
     - AppImage
     - snap
     - deb
-  maintainer: electronjs.org
+  maintainer: vichea.me
   category: Utility
 appImage:
   artifactName: ${name}-${version}.${ext}

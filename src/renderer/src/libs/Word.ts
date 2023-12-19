@@ -67,8 +67,14 @@ export class WordControllerImpl {
     return db.table('words').get(id)
   }
 
-  static search(word: string): Promise<Word[]> {
-    return db.table('words').where('word').startsWithIgnoreCase(word).toArray()
+  static search(word: string, limit: number = 10, page: number = 1): Promise<Word[]> {
+    return db
+      .table('words')
+      .where('word')
+      .startsWithIgnoreCase(word)
+      .limit(limit)
+      .offset((page - 1) * limit)
+      .toArray()
   }
 
   static count(): Promise<number> {

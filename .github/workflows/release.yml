@@ -1,90 +1,56 @@
-# name: Deploy
+name: Build/release Electron app
 
-# on:
-#   push:
-#     tags:
-#       - 'v[0-9]+.[0-9]+.[0-9]+'
+on:
+  push:
+    tags:
+      - v*.*.*
 
-# jobs:
-#   build_ubuntu:
-#     runs-on: ubuntu-20.04
-#     steps:
-#       - name: Checkout git repo
-#         uses: actions/checkout@v3
+jobs:
+  release:
+    runs-on: ${{ matrix.os }}
 
-#       - name: Install Node and NPM
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: 16
-#           cache: npm
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
 
-#       - name: Install and build
-#         run: |
-#           npm install
-#           npm run postinstall
-#           npm run build
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
 
-#       - name: Publish releases
-#         env:
-#           # This is used for uploading release assets to github
-#           GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-#         run: |
-#           npm exec electron-builder -- --publish always
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
-#   build_mac:
-#     runs-on: macos-latest
-#     steps:
-#       - name: Checkout git repo
-#         uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm install
 
-#       - name: Install Node and NPM
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: 16
-#           cache: npm
+      - name: build-linux
+        if: matrix.os == 'ubuntu-latest'
+        run: npm run build:linux
 
-#       - name: Install and build
-#         run: |
-#           npm install
-#           npm run postinstall
-#           npm run build
+      - name: build-mac
+        if: matrix.os == 'macos-latest'
+        run: npm run build:mac
 
-#       - name: Publish releases
-#         env:
-#           # These values are used for auto updates signing
-#           CSC_LINK: ${{ secrets.CSC_LINK }}
-#           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
-#           APPLE_ID: ${{ secrets.APPLE_ID }}
-#           APPLE_ID_PASS: ${{ secrets.APPLE_ID_PASS }}
-#           APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_ID_PASS }}
-#           # This is used for uploading release assets to github
-#           GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-#         run: |
-#           npm exec electron-builder -- --publish always
+      - name: build-win
+        if: matrix.os == 'windows-latest'
+        run: npm run build:win
 
-#   build_window:
-#     runs-on: windows-latest
-
-#     steps:
-#       - name: Checkout git repo
-#         uses: actions/checkout@v3
-
-#       - name: Install Node and NPM
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: 16
-#           cache: npm
-
-#       - name: Install and build
-#         run: |
-#           npm install
-#           npm run postinstall
-#           npm run build
-
-#       - name: Publish releases
-#         shell: powershell
-#         env:
-#           # This is used for uploading release assets to github
-#           GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-#         run: |
-#           npm exec electron-builder -- --publish always
+      - name: release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          files: |
+            dist/*.exe
+            dist/*.zip
+            dist/*.dmg
+            dist/*.AppImage
+            dist/*.snap
+            dist/*.deb
+            dist/*.rpm
+            dist/*.tar.gz
+            dist/*.yml
+            dist/*.blockmap
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
