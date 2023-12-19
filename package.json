@@ -7,6 +7,9 @@
     "name": "Vicheanath",
     "website": "vichea.me"
   },
+  "workspaces": [
+    "docs"
+  ],
   "homepage": "github.com/vicheanath/chuonnath",
   "license": "MIT",
   "scripts": {
@@ -25,7 +28,8 @@
     "build:linux": "electron-vite build && electron-builder --linux --config",
     "prepare": "husky install",
     "commit": "cz",
-    "commit:signed": "cz -S"
+    "commit:signed": "cz -S",
+    "build:docs": "cd docs && npm run build"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
