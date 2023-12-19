@@ -1,5 +1,4 @@
 const Header = (): JSX.Element => {
-
   const headerContent = [
     {
       name: 'Home',

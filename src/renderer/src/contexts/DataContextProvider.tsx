@@ -29,7 +29,7 @@ const DataContextProvider = ({ children }: PropsWithChildren<unknown>) => {
   useEffect(() => {
     const loadData = async (): Promise<void> => {
       try {
-        WordControllerImpl.load(dataJson as JSONArray[])
+        WordControllerImpl.load(dataJson as JSONArray)
       } catch (error) {
         setError(error)
       } finally {
