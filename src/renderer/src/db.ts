@@ -1,6 +1,8 @@
 import Dexie from 'dexie'
 
-export const db = new Dexie('chuon-nath-dictionary')
+export const DATA_BASE_NAME = 'chuon-nath-dictionary'
+export const db = new Dexie(DATA_BASE_NAME)
+export const DATA_BASE_VERSION = 1
 
 db.version(1).stores({
   words: '++id,word,definition',

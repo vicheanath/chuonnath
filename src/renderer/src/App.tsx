@@ -1,5 +1,5 @@
 import { GridPanel, FixedGridPanel } from './components/GridPanel'
-import SideBar from './components/SideBar'
+import Headers from './components/Header'
 import { DataContextProvider } from './contexts/DataContextProvider'
 import HomeScreen from './screens/HomeScreen'
 
@@ -7,7 +7,7 @@ function App(): JSX.Element {
   return (
     <DataContextProvider>
       <GridPanel>
-        <SideBar />
+        <Headers />
         <FixedGridPanel>
           <HomeScreen />
         </FixedGridPanel>
