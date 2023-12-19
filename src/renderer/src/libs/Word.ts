@@ -53,6 +53,9 @@ export class WordControllerImpl {
   static update(word: Word): PromiseExtended<IndexableType> {
     return db.table('words').put(word)
   }
+  static findAll(): Promise<Word[]> {
+    return db.table('words').toArray()
+  }
   static findAllByPage(page: number = 1, limit: number = 10): Promise<Word[]> {
     return db
       .table('words')
@@ -70,5 +73,12 @@ export class WordControllerImpl {
 
   static count(): Promise<number> {
     return db.table('words').count()
+  }
+
+  static formatStringWithDot(str: string, limit: number = 100): string {
+    if (str.length > limit) {
+      return str.slice(0, 30) + '...'
+    }
+    return str
   }
 }
