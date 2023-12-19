@@ -24,7 +24,7 @@ const HomeScreen: FC = (): JSX.Element => {
   }
 
   return (
-    <div>
+    <div className="container mx-auto">
       <div className="flex flex-row justify-center items-center w-9/12 mx-auto">
         <SearchBar onChange={(e) => setSearch(e.target.value)} />
         <Button
@@ -39,62 +39,44 @@ const HomeScreen: FC = (): JSX.Element => {
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8"></div>
         <div className="py-2 align-middle inline-block min-w-full">
-          <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead>
-                <tr className="bg-gray-50">
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Word
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Meaning
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {data.map((word, index) => (
-                  <tr key={index}>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{word.word}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div
-                        className="text-sm text-gray-900"
-                        dangerouslySetInnerHTML={{ __html: word.details }}
-                      ></div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="shadow overflow-hidden">
+            <div className="bg-white divide-y">
+              {data.map((word, index) => (
+                <div key={index} className="flex flex-row">
+                  <div className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">{word.word}</div>
+                  </div>
+                  <div className="px-6 py-4 whitespace-nowrap">
+                    <div
+                      className="text-sm text-gray-900"
+                      dangerouslySetInnerHTML={{
+                        __html: WordControllerImpl.formatStringWithDot(word.details.trim())
+                      }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-row justify-center items-center">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      <div className="flex flex-row justify-center items-center gap-3">
+        <Button
           onClick={() => {
             setPage(page - 1)
             fetchData()
           }}
         >
           Prev
-        </button>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        </Button>
+        <Button
           onClick={() => {
             setPage(page + 1)
             fetchData()
           }}
         >
           Next
-        </button>
+        </Button>
       </div>
     </div>
   )

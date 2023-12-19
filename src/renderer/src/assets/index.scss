@@ -1,3 +1,120 @@
+// import font files
+// ./fonts/Inter/static/Inter-Black.ttf
+// ./fonts/Inter/static/Inter-Bold.ttf
+// ./fonts/Inter/static/Inter-ExtraBold.ttf
+// ./fonts/Inter/static/Inter-ExtraLight.ttf
+// ./fonts/Inter/static/Inter-Light.ttf
+// ./fonts/Inter/static/Inter-Medium.ttf
+// ./fonts/Inter/static/Inter-Regular.ttf
+// ./fonts/Inter/static/Inter-SemiBold.ttf
+// ./fonts/Inter/static/Inter-Thin.ttf
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  src: url('./fonts/Inter/static/Inter-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./fonts/Inter/static/Inter-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  src: url('./fonts/Inter/static/Inter-ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 200;
+  src: url('./fonts/Inter/static/Inter-ExtraLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  src: url('./fonts/Inter/static/Inter-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/Inter/static/Inter-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Inter/static/Inter-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url('./fonts/Inter/static/Inter-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100;
+  src: url('./fonts/Inter/static/Inter-Thin.ttf') format('truetype');
+}
+
+// ./fonts/Battambang/Battambang-Black.ttf
+// ./fonts/Battambang/Battambang-Bold.ttf
+// ./fonts/Battambang/Battambang-Light.ttf
+// ./fonts/Battambang/Battambang-Regular.ttf
+// ./fonts/Battambang/Battambang-Thin.ttf
+
+@font-face {
+  font-family: 'Battambang';
+  font-style: normal;
+  font-weight: 900;
+  src: url('./fonts/Battambang/Battambang-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Battambang';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./fonts/Battambang/Battambang-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Battambang';
+  font-style: normal;
+  font-weight: 300;
+  src: url('./fonts/Battambang/Battambang-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Battambang';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Battambang/Battambang-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Battambang';
+  font-style: normal;
+  font-weight: 100;
+  src: url('./fonts/Battambang/Battambang-Thin.ttf') format('truetype');
+}
+
+// ./fonts/Roboto/Roboto-Black.ttf
+
 @tailwind base;
 @tailwind utilities;
 
@@ -35,6 +152,28 @@ p.bold {
   --color-accent-disabled: #f5bfbf;
   --screen-height-reduction: 0px;
   --color-primary-100-translucent: rgba(222, 227, 234, 0.15);
+}
+
+body {
+  font-family:
+    'Inter',
+    'Battambang',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-button-text);
+  background-color: var(--color-primary-900);
 }
 
 h1 {
