@@ -72,12 +72,6 @@
   src: url('./fonts/Inter/static/Inter-Thin.ttf') format('truetype');
 }
 
-// ./fonts/Battambang/Battambang-Black.ttf
-// ./fonts/Battambang/Battambang-Bold.ttf
-// ./fonts/Battambang/Battambang-Light.ttf
-// ./fonts/Battambang/Battambang-Regular.ttf
-// ./fonts/Battambang/Battambang-Thin.ttf
-
 @font-face {
   font-family: 'Battambang';
   font-style: normal;
@@ -144,6 +138,26 @@ p.bold {
   --color-primary-700: #242c37;
   --color-primary-800: #151a21;
   --color-primary-900: #0b0e11;
+  --color-secondary-washed-out: #879eed;
+  --color-secondary: #5575e7;
+  --color-accent-glow: rgba(253, 77, 77, 0.3);
+  --color-accent: #fd4d4d;
+  --color-accent-hover: #fd6868;
+  --color-accent-disabled: #f5bfbf;
+  --screen-height-reduction: 0px;
+  --color-primary-100-translucent: rgba(222, 227, 234, 0.15);
+}
+
+// light theme
+:root.light {
+  --color-button-text: #0b0e11;
+  --color-primary-100: #fff;
+  --color-primary-200: #f5f5f5;
+  --color-primary-300: #e0e0e0;
+  --color-primary-600: #757575;
+  --color-primary-700: #616161;
+  --color-primary-800: #424242;
+  --color-primary-900: #212121;
   --color-secondary-washed-out: #879eed;
   --color-secondary: #5575e7;
   --color-accent-glow: rgba(253, 77, 77, 0.3);
