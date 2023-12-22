@@ -11,6 +11,12 @@ interface JSONObject {
 
 export interface JSONArray extends Array<JSONValue> {}
 
+interface IWordJSON {
+  word: string
+  details: string
+}
+
+
 export interface IWord {
   id?: number
   word: string
@@ -25,7 +31,7 @@ export class Word extends AbstractMain implements IWord {
   word: string
   details: string
   partOfSpeech: KmPartOfSpeech
-  constructor(word: string, details: string, partOfSpeech: KmPartOfSpeech) {
+  constructor(word: string, details: string, partOfSpeech: KmPartOfSpeech = KmPartOfSpeech.Noun) {
     super()
     this.word = word
     this.details = details
@@ -38,7 +44,12 @@ export class WordControllerImpl {
     if ((await WordControllerImpl.count()) > 0) {
       return Promise.resolve()
     }
-    await db.table('words').bulkPut(json)
+    db.transaction('rw', db.table('words'), async () => {
+      for (const word of json) {
+        const wordObj: IWordJSON = JSON.parse(word as string)
+        await db.table('words').add(new Word(wordObj.word, wordObj.details))
+      }
+    })
     return
   }
 

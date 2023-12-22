@@ -5,15 +5,15 @@ import { FC, useEffect, useState } from 'react'
 
 const HomeScreen: FC = (): JSX.Element => {
   const [page, setPage] = useState<number>(1)
-  const [limit] = useState<number>(15)
+  // const [limit] = useState<number>(15)
   const [search, setSearch] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
 
   const [data, setData] = useState<Word[]>([])
   const fetchData = async (): Promise<void> => {
     setLoading(true)
-    const res = await WordControllerImpl.findAllByPage(page, limit)
-    setData(res)
+    // const res = await WordControllerImpl.findAllByPage(page, limit)
+    // setData(res)
     setLoading(false)
   }
 
