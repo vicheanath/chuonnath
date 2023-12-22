@@ -1,5 +1,4 @@
 import { Button } from '@renderer/components/Button'
-import { SearchBar } from '@renderer/components/SearchBar'
 import { Word, WordControllerImpl } from '@renderer/libs/Word'
 import { FC, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
