@@ -3,7 +3,7 @@ import { SearchBar } from '@renderer/components/SearchBar'
 import { Word, WordControllerImpl } from '@renderer/libs/Word'
 import { FC, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
 
 const HomeScreen: FC = (): JSX.Element => {
   const [page, setPage] = useState<number>(1)
