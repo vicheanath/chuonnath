@@ -16,7 +16,6 @@ interface IWordJSON {
   details: string
 }
 
-
 export interface IWord {
   id?: number
   word: string
