@@ -8,6 +8,6 @@
     "build": "tsc && vite build"
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.7"
+    "tailwindcss": "^3.4.0"
   }
 }
