@@ -45,7 +45,7 @@
     }
   },
   "dependencies": {
-    "@electron-toolkit/preload": "^2.0.0",
+    "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
     "dexie": "^3.2.4",
     "electron-updater": "^6.1.1",
