@@ -71,7 +71,7 @@
     "eslint-plugin-react": "^7.33.2",
     "husky": "^9.0.7",
     "picocolors": "^1.0.0",
-    "postcss": "^8.4.33",
+    "postcss": "^8.4.35",
     "prettier": "^3.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
